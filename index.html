@@ -1,26 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>My Blog</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dennis Chong</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d0d0d;
+      --soft: #71717a;
+      --rule: #e4e4e7;
+      --paper: #fafaf9;
+      --card-bg: #f4f4f5;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .serif { font-family: 'DM Serif Display', serif; }
+    .hero-bg { background: #0a0f1c; }
+
+    /* subtle grain overlay on hero */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .card { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 24px 48px -12px rgba(0,0,0,0.10); }
+
+    .tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    /* blog hover line */
+    .blog-row { border-top: 1px solid var(--rule); transition: background 0.2s; }
+    .blog-row:last-child { border-bottom: 1px solid var(--rule); }
+    .blog-row:hover { background: #f0f0ef; }
+
+    /* fade-in on load */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+
+    /* pill */
+    .pill {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: #a1a1aa;
+    }
+
+    /* currently building ticker */
+    .building-dot {
+      width: 7px; height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Welcome to My Blog</h1>
+
+  <!-- HEADER -->
+  <header class="bg-white border-b border-zinc-100 sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-8 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-x-3">
+        <div class="w-8 h-8 bg-zinc-900 text-white rounded-2xl flex items-center justify-center font-bold text-sm tracking-tight">DC</div>
+        <span class="text-base font-medium tracking-tight">Dennis Chong</span>
+      </div>
+      <nav class="flex items-center gap-x-8 text-sm font-medium text-zinc-400">
+        <a href="#about"    class="hover:text-zinc-900 transition">About</a>
+        <a href="#projects" class="hover:text-zinc-900 transition">Projects</a>
+        <a href="#blog"     class="hover:text-zinc-900 transition">Blog</a>
+        <a href="#golf"     class="hover:text-zinc-900 transition">Golf</a>
+        <a href="https://github.com/dchong1" target="_blank" class="hover:text-zinc-900 transition text-base">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-bg relative text-white py-36 text-center overflow-hidden">
+    <div class="relative max-w-3xl mx-auto px-6">
+      <h1 class="fade-up delay-1 serif text-6xl md:text-7xl leading-[1.1] mb-6">
+        From zero to full stack —<br><em>still building.</em>
+      </h1>
+      <p class="fade-up delay-2 mt-6 text-zinc-400 text-base tracking-wide">
+        Alternative investments &nbsp;·&nbsp; Self-taught developer &nbsp;·&nbsp; Hong Kong
+      </p>
+      <div class="fade-up delay-3 mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#projects"
+           class="px-9 py-4 bg-white text-zinc-900 font-semibold rounded-3xl text-sm hover:bg-zinc-100 transition">
+          See my projects
+        </a>
+        <a href="https://www.linkedin.com/in/dennis-chong" target="_blank"
+           class="px-9 py-4 border border-white/30 hover:bg-white/10 font-medium rounded-3xl text-sm transition">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="max-w-3xl mx-auto px-8 py-28">
+    <div class="grid md:grid-cols-5 gap-16">
+
+      <div class="md:col-span-3">
+        <p class="serif text-3xl leading-snug text-zinc-800">
+          Two decades as a finance professional in alternative investments — Hong Kong and the U.S. — The analytical side came naturally, yet the building side took longer to find. 
+        </p>
+      </div>
+
+      <div class="md:col-span-2 text-sm text-zinc-500 leading-relaxed space-y-5">
+        <p>
+          When AI made coding accessible, I made the move. Early-morning Coursera (while kids are still in bed), in-commute YouTube, full-stack roadmaps actually followed. Slowly things clicked. 
+        </p>
+        <p>
+          I've since built small tools — nothing earth-shattering, but end-to-end and mine.
+        </p>
+        <p class="text-zinc-400 italic">Still learning. Still building.</p>
+        <div class="pt-2 flex gap-x-4">
+          <a href="https://www.linkedin.com/in/dennis-chong" target="_blank" class="text-zinc-400 hover:text-zinc-900 transition text-xs font-medium underline underline-offset-4">LinkedIn →</a>
+          <a href="https://github.com/dchong1" target="_blank" class="text-zinc-400 hover:text-zinc-900 transition text-xs font-medium underline underline-offset-4">GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="bg-white py-24 border-t border-zinc-100">
+    <div class="max-w-5xl mx-auto px-8">
+      <div class="flex justify-between items-baseline mb-14">
+        <h2 class="serif text-4xl tracking-tight">Side Projects</h2>
+        <span class="tag text-zinc-400">Learning experiments</span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10">
+
+        <!-- Project Jam -->
+        <div class="card bg-zinc-50 border border-transparent hover:border-zinc-200 rounded-3xl p-10 group flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <h3 class="text-2xl font-semibold tracking-tight">Project Jam</h3>
+              <span class="tag px-3 py-1.5 bg-white rounded-2xl text-zinc-400 group-hover:text-blue-500 transition">Grok · Streamlit</span>
+            </div>
+            <p class="text-zinc-600 text-sm leading-relaxed mb-4">
+              Dual-LLM playground: one agent brainstorms ideas, the other critiques them — with conviction scoring and Notion export.
+            </p>
+            <p class="text-zinc-400 text-xs leading-relaxed italic mb-6">
+              Built this because I wanted to stress-test investment theses with something that would actually push back. Finance habit, new tools.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="tag px-3 py-1 bg-zinc-100 text-zinc-400 rounded-full">prompt chaining</span>
+              <span class="tag px-3 py-1 bg-zinc-100 text-zinc-400 rounded-full">Notion API</span>
+              <span class="tag px-3 py-1 bg-zinc-100 text-zinc-400 rounded-full">multi-agent</span>
+            </div>
+          </div>
+          <a href="https://github.com/dchong1/project_jam" target="_blank"
+             class="flex items-center gap-x-2 text-xs font-medium text-zinc-400 hover:text-zinc-900 transition">
+            VIEW ON GITHUB <span>→</span>
+          </a>
+        </div>
+
+        <!-- RSS-to-Notion -->
+        <div class="card bg-zinc-50 border border-transparent hover:border-zinc-200 rounded-3xl p-10 group flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <h3 class="text-2xl font-semibold tracking-tight">RSS-to-Notion</h3>
+              <span class="tag px-3 py-1.5 bg-white rounded-2xl text-zinc-400 group-hover:text-blue-500 transition">Automation · Grok</span>
+            </div>
+            <p class="text-zinc-600 text-sm leading-relaxed mb-4">
+              Pulls finance RSS feeds, summarises with Grok, and auto-saves into a Notion database.
+            </p>
+            <p class="text-zinc-400 text-xs leading-relaxed italic mb-6">
+              I was spending too much time skimming headlines every morning. So I built something to do it for me — and learned async APIs and scheduling in the process.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="tag px-3 py-1 bg-zinc-100 text-zinc-400 rounded-full">async APIs</span>
+              <span class="tag px-3 py-1 bg-zinc-100 text-zinc-400 rounded-full">RSS parsing</span>
+              <span class="tag px-3 py-1 bg-zinc-100 text-zinc-400 rounded-full">automation</span>
+            </div>
+          </div>
+          <a href="https://github.com/dchong1/rss-to-notion" target="_blank"
+             class="flex items-center gap-x-2 text-xs font-medium text-zinc-400 hover:text-zinc-900 transition">
+            VIEW ON GITHUB <span>→</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="max-w-5xl mx-auto px-8 py-28 border-t border-zinc-100">
+    <div class="flex justify-between items-baseline mb-14">
+      <h2 class="serif text-4xl tracking-tight">Notes & Thoughts</h2>
+      <span class="tag text-zinc-400">Occasional writing</span>
     </div>
 
-    <div class="blog">
-        <!-- Blog posts will be inserted here -->
-        <a href="#">Blog Post 1</a> <!-- Add missing </a> tag here -->
-        <a href="#">Blog Post 2</a>
-        <a href="#">Blog Post 3</a>
-        <!-- ... other posts ... -->
-        </a>
+    <div class="space-y-0">
+
+      <a href="#" class="blog-row flex items-start justify-between px-4 py-7 gap-8 group">
+        <div class="flex-1">
+          <p class="text-base font-medium text-zinc-800 group-hover:text-zinc-900 transition mb-1">
+            may share some thoughts here...
+          </p>
+          <p class="text-sm text-zinc-400">and maybe here..</p>
+        </div>
+      </a>
+
     </div>
-    <div class="footer">
-        <p>Built on GitHub Pages</p> <!-- Completed footer text here -->
+
+  </section>
+
+  <!-- GOLF -->
+  <section id="golf" class="bg-white border-t border-zinc-100 py-24">
+    <div class="max-w-3xl mx-auto px-8 text-center">
+      <div class="text-6xl mb-6">⛳</div>
+      <h3 class="serif text-3xl mb-4">Weekend golfer</h3>
+      <p class="text-zinc-500 text-sm leading-relaxed max-w-xs mx-auto">
+        Mid-handicap. Chasing the perfect drive. YouTube grinder for break-90 tips. Still waiting for them to work on actual courses. 🏌️‍♂️
+      </p>
     </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-zinc-900 text-white py-14">
+    <div class="max-w-5xl mx-auto px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-x-3">
+        <div class="w-7 h-7 bg-white text-zinc-900 rounded-xl flex items-center justify-center font-bold text-xs">DC</div>
+        <span class="text-sm text-zinc-400">Dennis Chong</span>
+      </div>
+      <div class="flex gap-x-8 text-sm text-zinc-400">
+        <a href="/cdn-cgi/l/email-protection#4f2b2a2121263c61243c2c272021280f28222e2623612c2022" class="hover:text-white transition">Email</a>
+        <a href="https://www.linkedin.com/in/dennis-chong" target="_blank" class="hover:text-white transition">LinkedIn</a>
+        <a href="https://github.com/dchong1" target="_blank" class="hover:text-white transition">GitHub</a>
+      </div>
+      <p class="text-zinc-600 text-xs">© 2026 Dennis Chong · Built on GitHub Pages</p>
+    </div>
+  </footer>
+
 </body>
 </html>
