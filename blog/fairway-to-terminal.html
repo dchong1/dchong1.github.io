@@ -1,1 +1,225 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From the fairway to the terminal — Dennis Chong</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    :root {
+      --text-primary: #111;
+      --text-secondary: #555;
+      --text-muted: #888;
+      --border: #e5e5e5;
+      --accent: #111;
+      --bg: #fff;
+      --tag-bg: #f5f5f5;
+    }
+ 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+ 
+    /* Nav — matches your site */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+ 
+    /* Article layout */
+    .article-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 7rem 1.5rem 5rem;
+    }
+ 
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--text-primary); }
+ 
+    .post-tag {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+ 
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 1.875rem);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+ 
+    .post-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+ 
+    .post-meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.25rem;
+    }
+ 
+    /* Body copy */
+    .post-body p {
+      margin-bottom: 1.4rem;
+      color: var(--text-primary);
+    }
+ 
+    .post-body p.lede {
+      font-size: 1.0625rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+ 
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+ 
+    .post-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+ 
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+ 
+    .tag-pill {
+      font-size: 0.75rem;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 10px;
+      color: var(--text-secondary);
+    }
+ 
+    .back-footer {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-footer:hover { color: var(--text-primary); }
+ 
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+ 
+  <nav>
+    <a href="/" class="nav-logo">DC</a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/#blog">Blog</a></li>
+      <li><a href="/#golf">Golf</a></li>
+    </ul>
+  </nav>
+ 
+  <article class="article-wrap">
+ 
+    <a href="/#blog" class="back-link">← Notes &amp; thoughts</a>
+ 
+    <div class="post-tag">Personal · Learning</div>
+ 
+    <h1>From the fairway to the terminal</h1>
+    <p class="post-subtitle">How I started — and why it took longer than expected</p>
+ 
+    <div class="post-meta">Dennis Chong &nbsp;·&nbsp; March 2026 &nbsp;·&nbsp; 4 min read</div>
+ 
+    <div class="post-body">
+ 
+      <p class="lede">I came to programming the way most people come to golf: convinced it would be straightforward, immediately humbled, and somehow unable to stop.</p>
+ 
+      <p>I'd always wanted to learn — not to become a developer, but to be able to build things myself. Automate the repetitive. Stop waiting on someone else to write a script. For years, the barrier was high enough that it stayed on the list. Then AI made coding accessible, and the excuse ran out.</p>
+ 
+      <p>Before writing a single line of code, I sat through Andrew Ng's machine learning course on Coursera. Early mornings, kids still asleep, headphones in. It was dense — gradient descent, neural network architecture, things I will never implement from scratch. But it gave me something I didn't expect: a mental model of what's actually happening inside these systems. The engine, before the steering wheel. Not strictly necessary, but it meant I could read between the lines later.</p>
+ 
+      <p>Hindsight makes this feel smarter than it was. At the time it mostly felt slow.</p>
+ 
+      <p>Then came the free-for-all: Harvard CS50, Kaggle, YouTube at 1.5x speed. I picked up Python. Started something small — a tool to automate my morning headline routine. Suddenly I needed to understand APIs, environment setup, version control. Each answer opened three more questions. It felt like a compacted CS degree, delivered in the wrong order.</p>
+ 
+      <p>What I've built so far is modest — a multi-agent system that brainstorms and critiques investment ideas, an RSS pipeline that summarises finance news so I don't have to. Neither will make the front page of Hacker News. Both solved real problems I had, and both taught me more than any tutorial.</p>
+ 
+      <p>Still building. Still Googling embarrassing things. Enjoying it more than I expected.</p>
+ 
+    </div>
+ 
+    <hr class="divider">
+ 
+    <div class="post-footer">
+      <div class="tags">
+        <span class="tag-pill">AI</span>
+        <span class="tag-pill">Learning</span>
+        <span class="tag-pill">Finance</span>
+        <span class="tag-pill">Building</span>
+      </div>
+      <a href="/#blog" class="back-footer">← Back to notes</a>
+    </div>
+ 
+  </article>
+ 
+  <footer>
+    © 2026 Dennis Chong · Built on GitHub Pages
+  </footer>
+ 
+</body>
+</html>
