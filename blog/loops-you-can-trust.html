@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loops you can trust — Dennis Chong</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d0d0d;
+      --soft: #71717a;
+      --rule: #e4e4e7;
+      --paper: #fafaf9;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .serif { font-family: 'DM Serif Display', serif; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER — matches index.html exactly -->
+  <header class="bg-white border-b border-zinc-100 sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-8 py-5 flex justify-between items-center">
+      <a href="/" class="flex items-center gap-x-3">
+        <div class="w-8 h-8 bg-zinc-900 text-white rounded-2xl flex items-center justify-center font-bold text-sm tracking-tight">DC</div>
+        <span class="text-base font-medium tracking-tight">Dennis Chong</span>
+      </a>
+      <nav class="flex items-center gap-x-8 text-sm font-medium text-zinc-400">
+        <a href="/#about"    class="hover:text-zinc-900 transition">About</a>
+        <a href="/#projects" class="hover:text-zinc-900 transition">Projects</a>
+        <a href="/#blog"     class="hover:text-zinc-900 transition">Blog</a>
+        <a href="/#golf"     class="hover:text-zinc-900 transition">Golf</a>
+        <a href="https://github.com/dchong1" target="_blank" class="hover:text-zinc-900 transition text-base">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ARTICLE -->
+  <article class="max-w-2xl mx-auto px-8 py-24">
+
+    <!-- Back link -->
+    <a href="/#blog" class="inline-flex items-center gap-x-2 text-xs font-medium text-zinc-400 hover:text-zinc-900 transition mb-12">
+      ← Notes &amp; thoughts
+    </a>
+
+    <!-- Tag -->
+    <p class="text-xs font-medium tracking-widest uppercase text-zinc-400 mb-4">Agents · Building</p>
+
+    <!-- Title -->
+    <h1 class="serif text-5xl leading-tight text-zinc-900 mb-3">Loops you can trust</h1>
+    <p class="text-lg text-zinc-500 mb-4">A short note on Lauren’s piece about verification, not vibes</p>
+
+    <!-- Meta -->
+    <p class="text-sm text-zinc-400 pb-8 mb-10 border-b border-zinc-100">
+      Dennis Chong &nbsp;·&nbsp; September 2026 &nbsp;·&nbsp; ~2 min read
+    </p>
+
+    <!-- Body -->
+    <div class="space-y-6 text-zinc-600 leading-relaxed text-base">
+
+      <p class="serif text-xl text-zinc-500 italic leading-relaxed">
+        Getting output from agents is easy. Ask, wait, paste. The hard part is knowing whether to trust it.
+      </p>
+
+      <p class="text-sm text-zinc-400">
+        Source: Lauren (<a href="https://x.com/poteto" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600 transition">@poteto</a>) — <a href="https://x.com/poteto/status/2069824386283319343" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600 transition">Loops You Can Trust</a>
+      </p>
+
+      <p>
+        Cheap output turns into slop fast: tidy diffs, confident drafts, and you still doing all the checking.
+      </p>
+
+      <p>
+        Lauren puts Andy Grove’s breakfast-factory idea on that. Toast and coffee can speed up. The plate still waits on the egg. Generation got faster. Verification did not. More agents without that check just mean more review.
+      </p>
+
+      <p>
+        I read it as architecture.
+      </p>
+
+      <p>
+        Teach the agent to check its own work against a real quality bar before you chase bigger loops. Without that, the loop makes mess. Same reason evals matter: if you cannot tell good from slop, you are hoping.
+      </p>
+
+      <p>
+        Build a verify loop you can leave alone. Reproduce. Change. Measure again. Stop when the check fails. Trust that loop, not the raw generation.
+      </p>
+
+      <p>
+        Show the work. “I fixed it” is not enough. Match evidence to what changed: failing and passing tests, before and after, a trace or screenshot.
+      </p>
+
+      <p>
+        Output got cheap. Verification is scarce. Build a verify loop with proof shaped to the change.
+      </p>
+
+      <p>
+        Loops that run are easy. Loops you can trust are worth building.
+      </p>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-16 pt-8 border-t border-zinc-100 flex justify-between items-center flex-wrap gap-4">
+      <div class="flex gap-2 flex-wrap">
+        <span class="text-xs font-medium tracking-widest uppercase text-zinc-400 bg-zinc-100 px-3 py-1 rounded-full">Agents</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-zinc-400 bg-zinc-100 px-3 py-1 rounded-full">Verification</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-zinc-400 bg-zinc-100 px-3 py-1 rounded-full">Building</span>
+      </div>
+      <a href="/#blog" class="text-xs font-medium text-zinc-400 hover:text-zinc-900 transition">← Back to notes</a>
+    </div>
+
+  </article>
+
+  <!-- FOOTER — matches index.html exactly -->
+  <footer class="bg-zinc-900 text-white py-14 mt-12">
+    <div class="max-w-5xl mx-auto px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-x-3">
+        <div class="w-7 h-7 bg-white text-zinc-900 rounded-xl flex items-center justify-center font-bold text-xs">DC</div>
+        <span class="text-sm text-zinc-400">Dennis Chong</span>
+      </div>
+      <div class="flex gap-x-8 text-sm text-zinc-400">
+        <a href="https://www.linkedin.com/in/dennis-chong" target="_blank" class="hover:text-white transition">LinkedIn</a>
+        <a href="https://github.com/dchong1" target="_blank" class="hover:text-white transition">GitHub</a>
+      </div>
+      <p class="text-zinc-600 text-xs">© 2026 Dennis Chong · Built on GitHub Pages</p>
+    </div>
+  </footer>
+
+</body>
+</html>
